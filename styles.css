@@ -1,0 +1,251 @@
+.yaudiofocus-toggle,
+.yt-audio-focus-strict-toggle,
+.yt-audio-focus-close-toggle {
+  appearance: none;
+  background: rgba(0, 0, 0, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  font: 600 14px/1.2 Arial, Helvetica, sans-serif;
+  height: 34px;
+  margin: 10px 6px 0;
+  min-width: 112px;
+  padding: 0 14px;
+  transform: translateY(2px);
+  white-space: nowrap;
+  z-index: 50 !important;
+}
+
+.yt-audio-focus-strict-toggle {
+  min-width: 140px;
+}
+
+.yt-audio-focus-close-toggle {
+  min-width: 150px;
+}
+
+.yaudiofocus-toggle:hover,
+.yaudiofocus-toggle:focus-visible,
+.yt-audio-focus-strict-toggle:hover,
+.yt-audio-focus-strict-toggle:focus-visible,
+.yt-audio-focus-close-toggle:hover,
+.yt-audio-focus-close-toggle:focus-visible {
+  background: rgba(255, 255, 255, 0.18);
+  outline: 1px solid rgba(255, 255, 255, 0.75);
+  outline-offset: 1px;
+}
+
+.yaudiofocus-toggle[aria-pressed="true"],
+.yt-audio-focus-strict-toggle[aria-pressed="true"],
+.yt-audio-focus-close-toggle[aria-pressed="true"] {
+  background: #fff;
+  border-color: #fff;
+  color: #111;
+}
+
+.yaudiofocus-toggle-mobile {
+  left: 10px;
+  position: absolute;
+  top: 42px;
+  transform: none;
+}
+
+.yt-audio-focus-strict-toggle-mobile {
+  left: 10px;
+  position: absolute;
+  top: 76px;
+  transform: none;
+}
+
+.yt-audio-focus-close-toggle-mobile {
+  left: 10px;
+  position: absolute;
+  top: 110px;
+  transform: none;
+}
+
+html.yt-audio-focus-enabled #movie_player,
+html.yt-audio-focus-enabled .html5-video-player,
+html.yt-audio-focus-enabled #player-container,
+html.yt-audio-focus-enabled #player,
+#movie_player.yt-audio-focus-enabled,
+.html5-video-player.yt-audio-focus-enabled,
+#player-container.yt-audio-focus-enabled,
+#player.yt-audio-focus-enabled {
+  background: #000 !important;
+  position: relative !important;
+}
+
+#yt-audio-focus-blackout {
+  background: #000 !important;
+  display: block !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  z-index: 20 !important;
+}
+
+/*
+ * Hide only known media/preview layers. Do not use broad child selectors here;
+ * captions and controls share the player DOM and must remain visible.
+ */
+html.yt-audio-focus-enabled #movie_player video.html5-main-video,
+html.yt-audio-focus-enabled #movie_player .html5-main-video,
+html.yt-audio-focus-enabled #movie_player .ytp-cued-thumbnail-overlay,
+html.yt-audio-focus-enabled #movie_player .ytp-cued-thumbnail-overlay-image,
+html.yt-audio-focus-enabled #movie_player .ytp-storyboard,
+html.yt-audio-focus-enabled #movie_player .ytp-storyboard-framepreview,
+html.yt-audio-focus-enabled #movie_player .ytp-videowall-still,
+html.yt-audio-focus-enabled #movie_player .ytp-videowall-still-image,
+html.yt-audio-focus-enabled #movie_player .ytp-endscreen-content,
+html.yt-audio-focus-enabled #movie_player .ytp-pause-overlay,
+html.yt-audio-focus-enabled #movie_player .ytp-preview,
+html.yt-audio-focus-enabled #movie_player .ytp-ad-preview-container,
+html.yt-audio-focus-enabled .html5-video-player video.html5-main-video,
+html.yt-audio-focus-enabled .html5-video-player .html5-main-video,
+html.yt-audio-focus-enabled .html5-video-player .ytp-cued-thumbnail-overlay,
+html.yt-audio-focus-enabled .html5-video-player .ytp-cued-thumbnail-overlay-image,
+html.yt-audio-focus-enabled .html5-video-player .ytp-storyboard,
+html.yt-audio-focus-enabled .html5-video-player .ytp-storyboard-framepreview,
+html.yt-audio-focus-enabled .html5-video-player .ytp-videowall-still,
+html.yt-audio-focus-enabled .html5-video-player .ytp-videowall-still-image,
+html.yt-audio-focus-enabled .html5-video-player .ytp-endscreen-content,
+html.yt-audio-focus-enabled .html5-video-player .ytp-pause-overlay,
+html.yt-audio-focus-enabled .html5-video-player .ytp-preview,
+html.yt-audio-focus-enabled .html5-video-player .ytp-ad-preview-container,
+html.yt-audio-focus-enabled .yt-audio-focus-suppressed {
+  background: #000 !important;
+  filter: brightness(0) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  z-index: 1 !important;
+}
+
+html.yt-audio-focus-enabled #movie_player video,
+html.yt-audio-focus-enabled .html5-video-player video {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/*
+ * Caption rescue: keep subtitles/lyrics above the blackout overlay.
+ */
+html.yt-audio-focus-enabled .ytp-caption-window-container,
+html.yt-audio-focus-enabled .caption-window,
+html.yt-audio-focus-enabled .captions-text,
+html.yt-audio-focus-enabled .ytp-caption-segment,
+html.yt-audio-focus-enabled .ytp-caption-window-rollup,
+html.yt-audio-focus-enabled .ytp-caption-window-bottom,
+html.yt-audio-focus-enabled .ytp-caption-window-top {
+  display: block !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  z-index: 40 !important;
+}
+
+/*
+ * Player UI rescue: keep controls and menus visible/clickable above captions
+ * and the blackout overlay.
+ */
+html.yt-audio-focus-enabled .ytp-chrome-bottom,
+html.yt-audio-focus-enabled .ytp-chrome-top,
+html.yt-audio-focus-enabled .ytp-progress-bar-container,
+html.yt-audio-focus-enabled .ytp-left-controls,
+html.yt-audio-focus-enabled .ytp-right-controls,
+html.yt-audio-focus-enabled .ytp-next-button,
+html.yt-audio-focus-enabled .ytp-prev-button,
+html.yt-audio-focus-enabled .ytp-play-button,
+html.yt-audio-focus-enabled .ytp-volume-area,
+html.yt-audio-focus-enabled .ytp-subtitles-button,
+html.yt-audio-focus-enabled .ytp-settings-button,
+html.yt-audio-focus-enabled .ytp-size-button,
+html.yt-audio-focus-enabled .ytp-fullscreen-button,
+html.yt-audio-focus-enabled .ytp-playlist-menu-button,
+html.yt-audio-focus-enabled .ytp-autonav-toggle-button,
+html.yt-audio-focus-enabled .ytp-settings-menu,
+html.yt-audio-focus-enabled .ytp-popup,
+html.yt-audio-focus-enabled .ytp-menuitem,
+html.yt-audio-focus-enabled .ytp-panel,
+html.yt-audio-focus-enabled .ytp-gradient-bottom,
+html.yt-audio-focus-enabled .ytp-gradient-top,
+html.yt-audio-focus-enabled .yaudiofocus-toggle,
+html.yt-audio-focus-enabled .yt-audio-focus-strict-toggle,
+html.yt-audio-focus-enabled .yt-audio-focus-close-toggle {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  z-index: 50 !important;
+}
+
+html.yt-audio-focus-enabled ytd-miniplayer,
+html.yt-audio-focus-enabled .ytp-miniplayer,
+html.yt-audio-focus-enabled .ytp-miniplayer-ui,
+html.yt-audio-focus-enabled .ytp-player-minimized,
+html.yt-audio-focus-enabled #movie_player.ytp-player-minimized {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+html.yt-audio-focus-enabled .ytp-pip-button {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+html.yt-audio-focus-enabled body > video,
+html.yt-audio-focus-enabled ytd-miniplayer video,
+html.yt-audio-focus-enabled .ytp-miniplayer video,
+html.yt-audio-focus-enabled .ytp-miniplayer-ui video,
+html.yt-audio-focus-enabled .ytp-player-minimized video {
+  background: #000 !important;
+  filter: brightness(0) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+html.yt-audio-focus-background-blackout,
+html.yt-audio-focus-background-blackout body,
+html.yt-audio-focus-background-blackout ytd-app {
+  background: #000 !important;
+}
+
+html.yt-audio-focus-background-blackout #yt-audio-focus-page-blackout {
+  position: fixed !important;
+  inset: 0 !important;
+  background: #000 !important;
+  z-index: 2147483647 !important;
+  pointer-events: none !important;
+}
+
+html.yt-audio-focus-background-blackout video,
+html.yt-audio-focus-background-blackout img,
+html.yt-audio-focus-background-blackout canvas,
+html.yt-audio-focus-background-blackout .ytp-cued-thumbnail-overlay,
+html.yt-audio-focus-background-blackout .ytp-cued-thumbnail-overlay-image,
+html.yt-audio-focus-background-blackout .ytp-storyboard,
+html.yt-audio-focus-background-blackout .ytp-preview,
+html.yt-audio-focus-background-blackout .ytp-endscreen-content {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+@media (max-width: 700px) {
+  .yaudiofocus-toggle {
+    font-size: 11px;
+    height: 26px;
+    min-width: 76px;
+    padding: 0 7px;
+  }
+
+  .yt-audio-focus-strict-toggle,
+  .yt-audio-focus-close-toggle {
+    font-size: 11px;
+    height: 26px;
+    min-width: 104px;
+    padding: 0 7px;
+  }
+}
